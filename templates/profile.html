@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+    <style>
+    .nav-button{
+            display: flex;
+        }
+    </style>
+{% endblock head_content %}
+
+{% block main_content %}
+    
+    {% if not urls %}
+        <h4>There is no url address saved</h4>
+    {% endif %}
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Original URL</th>
+                <th>Shortened URL</th>
+                <th>Click Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url in urls %}
+            <tr>
+                <td><a href="{{ url.url }}" target="_blank">{{ url.url }}</a></td>
+                <td>
+                    <a href="{% url 'redirectPage' short_code=url.short_code %}" target="_blank">
+                        {{ url.short_code }}
+                    </a>
+                </td>
+                <td>{{ url.click_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   
+    
+{% endblock main_content %}

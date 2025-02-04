@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="2;url={{ original_url }}">
+{% endblock head_content %}
+
+
+{% block main_content %}
+    <h4>Redirecting to {{ original_url }}...</h4>
+    
+    <p>If it doesn't redirect, click <a href="{{ original_url }}">here</a></p>
+    
+{% endblock main_content %}

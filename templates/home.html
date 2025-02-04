@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+    <style>
+    .nav-button{
+            display: flex;
+        }
+    </style>
+{% endblock head_content %}
+
+{% block main_content %}
+
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <input type="text" name="url" placeholder="Enter text">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if short_code %}
+        <p> Your url address is: <a href="localhost:8000/{{ short_code }}">localhost:8000/{{ short_code }}</a></p>
+        
+    {% endif %}
+{% endblock main_content %}
